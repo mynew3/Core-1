@@ -8,9 +8,9 @@
 -  
 -  
 
-**Target branch(es):** 3.3.5/master
+**Target branch(es):** ProjectLegion/master
 
-- [ ] 3.3.5
+- [ ] ProjectLegion
 - [ ] master
 
 **Issues addressed:** Closes #  (insert issue tracker number)

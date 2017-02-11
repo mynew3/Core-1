@@ -14,8 +14,6 @@
 2. 
 3. 
 
-**Branch(es):** 3.3.5 / master (Tell us which branch(es) this issue affects.)
-
 **TC rev. hash/commit:**  
 
 **TDB version:**  
