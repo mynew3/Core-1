@@ -1276,6 +1276,53 @@ class spell_pri_vampiric_touch : public SpellScriptLoader
         }
 };
 
+// Shadowfiend - 34433
+// Mindbender - 123040
+class spell_pri_shadowfiend: public SpellScriptLoader
+{
+    public:
+        spell_pri_shadowfiend() : SpellScriptLoader("spell_pri_shadowfiend") { }
+
+        class spell_pri_shadowfiend_SpellScript : public SpellScript
+        {
+            PrepareSpellScript(spell_pri_shadowfiend_SpellScript);
+
+            void HandleAfterHit()
+            {
+                if (Player* pl_player = GetCaster()->ToPlayer())
+                {
+                    if (Unit* pl_target = GetExplTargetUnit())
+                    {
+                        if (Guardian* pl_pet = pl_player->GetGuardianPet())
+                        {
+                            pl_pet->InitCharmInfo();
+                            pl_pet->SetReactState(REACT_AGGRESSIVE);
+
+                            if (pl_pet->IsValidAttackTarget(pl_target))
+                                pl_pet->ToCreature()->AI()->AttackStart(pl_target);
+                            else
+                            {
+                                Unit* pl_victim = pl_player->GetSelectedUnit();
+                                if (pl_victim && pl_pet->IsValidAttackTarget(pl_target))
+                                    pl_pet->ToCreature()->AI()->AttackStart(pl_target);
+                            }
+                        }
+                    }
+                }
+            }
+
+            void Register() override
+            {
+                AfterHit += SpellHitFn(spell_pri_shadowfiend_SpellScript::HandleAfterHit);
+            }
+        };
+
+        SpellScript* GetSpellScript() const override
+        {
+            return new spell_pri_shadowfiend_SpellScript();
+        }
+};
+
 void AddSC_priest_spell_scripts()
 {
     new spell_pri_body_and_soul();
@@ -1305,4 +1352,5 @@ void AddSC_priest_spell_scripts()
     new spell_pri_vampiric_embrace();
     new spell_pri_vampiric_embrace_target();
     new spell_pri_vampiric_touch();
+    new spell_pri_shadowfiend();
 }
