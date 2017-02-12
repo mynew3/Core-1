@@ -594,7 +594,7 @@ void InstanceScript::DoRemoveAurasDueToSpellOnPlayers(uint32 spell)
 }
 
 // Remove aura from stack on all players in instance
-void InstanceScript::DoRemoveAuraFromStackOnPlayers(uint32 spell, ObjectGuid casterGUID/* = ObjectGuid::Empty*/, AuraRemoveMode removeMode /*= AURA_REMOVE_BY_DEFAULT*/, int32 num /*= 1*/)
+void InstanceScript::DoRemoveAuraFromStackOnPlayers(uint32 spell, ObjectGuid casterGUID, AuraRemoveMode removeMode, uint16 num)
 {
     Map::PlayerList const& PlayerList = instance->GetPlayers();
     if (!PlayerList.isEmpty())

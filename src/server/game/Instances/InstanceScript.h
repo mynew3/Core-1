@@ -220,7 +220,7 @@ class TC_GAME_API InstanceScript : public ZoneScript
         void DoRemoveAurasDueToSpellOnPlayers(uint32 spell);
 
         // Remove aura from stack on all players in instance
-        void DoRemoveAuraFromStackOnPlayers(uint32 spell, ObjectGuid casterGUID = ObjectGuid::Empty, AuraRemoveMode removeMode = AURA_REMOVE_BY_DEFAULT, int32 num = 1);
+        void DoRemoveAuraFromStackOnPlayers(uint32 spell, ObjectGuid casterGUID = ObjectGuid::Empty, AuraRemoveMode removeMode = AURA_REMOVE_BY_DEFAULT, uint16 num = 1);
 
         // Cast spell on all players in instance
         void DoCastSpellOnPlayers(uint32 spell);
