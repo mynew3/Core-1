@@ -1395,12 +1395,12 @@ class spell_pri_surge_of_light : public SpellScriptLoader
 
             int32 m_duration = 0;
 
-            /*void HandleOnPrepare()
+            void HandleOnPrepare()
             {
                 if (Unit* pl_caster = GetCaster())
                 if (Aura* pl_SurgeOfLight = pl_caster->GetAura(SPELL_PRIEST_SURGE_OF_LIGHT))
                     m_duration = pl_SurgeOfLight->GetDuration();
-            }*/ // no implement FIX ME
+            }
 
             void HandleOnCast()
             {
@@ -1415,7 +1415,7 @@ class spell_pri_surge_of_light : public SpellScriptLoader
 
             void Register() override
             {
-                // OnPrepare += SpellOnPrepareFn(spell_pri_surge_of_light_SpellScript::HandleOnPrepare); no implement FIX ME
+                OnPrepare += SpellOnPrepareFn(spell_pri_surge_of_light_SpellScript::HandleOnPrepare);
                 OnCast += SpellCastFn(spell_pri_surge_of_light_SpellScript::HandleOnCast);
             }
         };
