@@ -618,6 +618,19 @@ void InstanceScript::DoCastSpellOnPlayers(uint32 spell)
                 player->CastSpell(player, spell, true);
 }
 
+void InstanceScript::DoStartMovie(uint32 movieId)
+{
+    Map::PlayerList const &PlayerList = instance->GetPlayers();
+    if (!PlayerList.isEmpty())
+    {
+        for (Map::PlayerList::const_iterator iter = PlayerList.begin(); iter != PlayerList.end(); ++iter)
+        {
+            if (Player* player = iter->GetSource())
+                player->SendMovieStart(movieId);
+        }
+    }
+}
+
 bool InstanceScript::CheckAchievementCriteriaMeet(uint32 criteria_id, Player const* /*source*/, Unit const* /*target*/ /*= NULL*/, uint32 /*miscvalue1*/ /*= 0*/)
 {
     TC_LOG_ERROR("misc", "Achievement system call InstanceScript::CheckAchievementCriteriaMeet but instance script for map %u not have implementation for achievement criteria %u",
