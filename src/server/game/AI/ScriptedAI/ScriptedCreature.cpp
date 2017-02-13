@@ -452,6 +452,8 @@ BossAI::BossAI(Creature* creature, uint32 bossId) : ScriptedAI(creature),
     {
         return !me->HasUnitState(UNIT_STATE_CASTING);
     });
+
+    m_CheckAreaTimer = 1 * TimeConstants::IN_MILLISECONDS;
 }
 
 void BossAI::_Reset()
