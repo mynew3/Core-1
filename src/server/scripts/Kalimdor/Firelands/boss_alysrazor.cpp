@@ -1053,7 +1053,7 @@ class npc_alysrazor_blazing_talon_initiate : public CreatureScript
                     me->SetCanFly(false);
                     me->SetDisableGravity(false);
                     me->RemoveByteFlag(UNIT_FIELD_BYTES_1, 3, 0x02);
-                    me->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_REMOVE_CLIENT_CONTROL);
+                    me->SetControlled(true, UNIT_STATE_ROOT);
                 }
             }
 
